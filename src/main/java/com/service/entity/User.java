@@ -13,7 +13,7 @@ public class User {
     @NotNull(message = "Password is compulsory")
     @NotBlank(message = "Password is compulsory")
     @Size(min = 8, message = "Password should be 8 characters minimum")
-    @Pattern(regexp = "^.*(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!;:*()@#$%^&+-=_]).*$",
+    @Pattern(regexp = "^.*(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!;:*()@#$%^&+-=_<>]).*$",
              message = "Password should contain:\n\t1.) One lowercase character\n\t2.) One uppercase character\n\t3.) One number\n\t4.) One special character")
     private String password;
 

@@ -6,6 +6,6 @@ public class ApplicationTest {
 
     @Test
     public void testMainMethod() {
-
+        
     }
 }

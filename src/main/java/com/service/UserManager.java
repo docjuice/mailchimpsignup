@@ -30,6 +30,7 @@ public class UserManager {
 
     private final static String URL = "https://login.mailchimp.com/signup/post";
 
+    
     public UserManager(String userPropertiesFilePath) {
 
         this.userPropertiesFilePath = userPropertiesFilePath;
@@ -65,7 +66,6 @@ public class UserManager {
 
         if (user != null && validateUser(user, validator)) {
             try {
-
                 HttpClient client = HttpClientBuilder.create().build();
                 HttpPost post = new HttpPost(URL);
 
@@ -92,7 +92,6 @@ public class UserManager {
                     default:
                         break;
                 }
-
             } catch (IOException e) {
                 System.out.println("Error while accessing Mailchimp server " +  e.getMessage());
             }
