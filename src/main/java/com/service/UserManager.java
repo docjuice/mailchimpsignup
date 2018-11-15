@@ -1,11 +1,10 @@
 package com.service;
 
 import com.service.entity.User;
-import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -79,7 +78,7 @@ public class UserManager {
 
                 post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
-                HttpResponse response = client.execute(post);
+                CloseableHttpResponse response = client.execute(post);
 
                 int resultStatus = response.getStatusLine().getStatusCode();
 
@@ -94,6 +93,7 @@ public class UserManager {
                         break;
                 }
 
+                response.close();
                 client.close();
             } catch (IOException e) {
                 System.out.println("Error while accessing Mailchimp server " +  e.getMessage());
