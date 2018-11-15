@@ -7,6 +7,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -66,7 +67,7 @@ public class UserManager {
 
         if (user != null && validateUser(user, validator)) {
             try {
-                HttpClient client = HttpClientBuilder.create().build();
+                CloseableHttpClient client = HttpClientBuilder.create().build();
                 HttpPost post = new HttpPost(URL);
 
                 post.setHeader("User-Agent", USER_AGENT);
@@ -92,6 +93,8 @@ public class UserManager {
                     default:
                         break;
                 }
+
+                client.close();
             } catch (IOException e) {
                 System.out.println("Error while accessing Mailchimp server " +  e.getMessage());
             }

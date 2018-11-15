@@ -50,17 +50,4 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-    private Boolean isCorrectUsername(String username) {
-        return username.matches("");
-    }
-
-    private Boolean isCorrectPassword(String password) {
-        return password.matches("");
-    }
-
-    private Boolean isCorrectEmail(String email) {
-        return email.matches("");
-    }
 }
